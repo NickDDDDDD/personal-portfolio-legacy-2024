@@ -3,6 +3,7 @@ import { useTheme } from "@mui/material/styles";
 import { HeroSectionContent } from "../utils/content";
 import ActionButton from "../components/Buttons/ActionButton";
 import Title from "../components/CustomTypography/Title";
+import { Parallax } from "react-scroll-parallax";
 
 const {
   title,
@@ -21,106 +22,122 @@ const HeroSection = () => {
   const isSmallerScreen = useMediaQuery(theme.breakpoints.down("md"));
 
   return (
-    <Box
-      sx={{
-        position: "relative",
-        height: "100vh",
-        width: "100%",
-      }}
-    >
+    <Box sx={{ position: "relative", width: "100%", height: "90vh" }}>
       {/* Main background image */}
       <Box
-        component="img"
-        src={mainBG}
-        alt="main background"
         sx={{
           position: "fixed",
           zIndex: -10,
           top: 0,
-          width: "100%",
-          height: "100%",
+          left: 0,
+          right: 0,
         }}
-      />
+      >
+        <img
+          src={mainBG}
+          alt="main background"
+          style={{
+            width: "100%",
+          }}
+        />
+      </Box>
 
       {/* Background elements  */}
+
       <Box
         sx={{
           position: "absolute",
+          width: "100%",
+          height: "90vh",
           zIndex: -1,
           top: 0,
           left: 0,
           right: 0,
-          height: "100%",
         }}
       >
-        {/* Trees image    */}
-        <Box
-          component="img"
-          src={treesImage}
-          alt="trees"
-          sx={{
-            position: "absolute",
-            display: { xs: "none", md: "inline" },
+        {/* Hidden background image to give box a height */}
+        <img
+          src={mainBG}
+          alt="main background"
+          style={{
             width: "100%",
-            left: 0,
-            right: 0,
-            bottom: 0,
+            opacity: 0,
           }}
         />
+
+        {/* Shooting star image  */}
+        <img
+          src={shootingStarImage}
+          alt="shooting star"
+          style={{
+            position: "absolute",
+            zIndex: -3,
+            display: "inline",
+            top: "30px",
+            right: "15%",
+            width: "500px",
+          }}
+        />
+
         {/* Cliff image  */}
-        <Box
-          component="img"
+
+        <img
           src={cliffImage}
           alt="cliff"
-          sx={{
+          style={{
             position: "absolute",
             display: "inline",
             height: "100%",
+            width: "auto",
             right: -2,
             top: 0,
-            // bottom: "20%",
           }}
         />
 
         {/* Horse image  */}
-        <Box
-          component="img"
+        <img
           src={horseImage}
           alt="horse"
-          sx={{
+          style={{
             position: "absolute",
             display: "inline",
+            objectFit: "contain",
             height: "38%",
             right: "14%",
             bottom: "45%",
             transform: "rotate(7deg)",
           }}
         />
+      </Box>
 
-        {/* Shooting star image  */}
-        <Box
-          component="img"
-          src={shootingStarImage}
-          alt="shooting star"
-          sx={{
-            position: "absolute",
-            display: "inline",
+      {/* Trees image with Parallax   */}
+      <Box
+        sx={{
+          position: "absolute",
+          width: "100%",
+          display: { xs: "none", md: "inline" },
+          bottom: 0,
 
-            top: "30px",
-            right: "15%",
-            width: "500px",
-          }}
-        />
+          zIndex: -2,
+        }}
+      >
+        <Parallax speed={-100}>
+          <img
+            src={treesImage}
+            alt="trees"
+            style={{
+              width: "100%",
+            }}
+          />
+        </Parallax>
       </Box>
 
       {/* Content  */}
-
-      <Container sx={{ height: "80vh" }}>
+      <Container sx={{ height: "90vh" }}>
         <Stack sx={{ height: "100%" }} justifyContent="center">
           {/* Titles  */}
           <Title variant="h1">{title}</Title>
           <Title variant="h2">{subtitle}</Title>
-
           {/* Buttons  */}
           <Stack
             direction={{ xs: "column", md: "row" }}

@@ -8,13 +8,10 @@ const HomePage = () => {
     <div>
       {/* nav bar  */}
       <MainNavbar />
-
       {/* sections  */}
       <HeroSection />
       <ProjectsSection />
-
       {/* footer  */}
-
       <Footer />
     </div>
   );
