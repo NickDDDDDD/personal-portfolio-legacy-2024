@@ -4,6 +4,7 @@ import { HeroSectionContent } from "../utils/content";
 import ActionButton from "../components/Buttons/ActionButton";
 import Title from "../components/CustomTypography/Title";
 import { Parallax } from "react-scroll-parallax";
+import useMeasure from "react-use-measure";
 
 const {
   title,
@@ -20,9 +21,16 @@ const {
 const HeroSection = () => {
   const theme = useTheme();
   const isSmallerScreen = useMediaQuery(theme.breakpoints.down("md"));
+  const [containerRef, { height: containerHeight }] = useMeasure();
 
   return (
-    <Box sx={{ position: "relative", width: "100%", height: "90vh" }}>
+    <Box
+      sx={{
+        position: "relative",
+        width: "100%",
+        height: isSmallerScreen ? "80vh" : containerHeight,
+      }}
+    >
       {/* Main background image */}
       <Box
         sx={{
@@ -42,13 +50,13 @@ const HeroSection = () => {
         />
       </Box>
 
-      {/* Background elements  */}
+      {/* Background static elements  */}
 
       <Box
+        ref={containerRef}
         sx={{
           position: "absolute",
           width: "100%",
-          height: "90vh",
           zIndex: -1,
           top: 0,
           left: 0,
@@ -110,18 +118,19 @@ const HeroSection = () => {
         />
       </Box>
 
-      {/* Trees image with Parallax   */}
+      {/* Background trees image with Parallax   */}
       <Box
+        className="tree-parallax"
         sx={{
           position: "absolute",
           width: "100%",
           display: { xs: "none", md: "inline" },
-          bottom: 0,
+          bottom: -70,
 
           zIndex: -2,
         }}
       >
-        <Parallax speed={-100}>
+        <Parallax speed={-35}>
           <img
             src={treesImage}
             alt="trees"
@@ -133,7 +142,7 @@ const HeroSection = () => {
       </Box>
 
       {/* Content  */}
-      <Container sx={{ height: "90vh" }}>
+      <Container sx={{ height: "100%" }}>
         <Stack sx={{ height: "100%" }} justifyContent="center">
           {/* Titles  */}
           <Title variant="h1">{title}</Title>
