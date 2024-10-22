@@ -1,32 +1,142 @@
-import { Box } from "@mui/material";
-import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
-import backgroundImage from "../assets/images/firewatch-hero/background.png";
-import jungle1 from "../assets/images/firewatch-hero/jungle1.png";
-import jungle2 from "../assets/images/firewatch-hero/jungle2.png";
-import jungle3 from "../assets/images/firewatch-hero/jungle3.png";
-import jungle4 from "../assets/images/firewatch-hero/jungle4.png";
-import jungle5 from "../assets/images/firewatch-hero/jungle5.png";
-import manOnMountain from "../assets/images/firewatch-hero/man_on_mountain.png";
-import mountains from "../assets/images/firewatch-hero/mountains.png";
+import { Box, Container, Stack, useTheme, useMediaQuery } from "@mui/material";
+import {
+  ParallaxBanner,
+  ParallaxBannerLayer,
+  useParallaxController,
+} from "react-scroll-parallax";
+import Title from "../components/CustomTypography/Title";
+import ActionButton from "../components/Buttons/ActionButton";
+
+import { HeroSectionContentFirewatch } from "../utils/content";
+
+const {
+  backgroundImage,
+  mountains,
+  jungle1,
+  jungle2,
+  jungle3,
+  jungle4,
+  jungle5,
+  manOnMountain,
+  title,
+  subtitle,
+  mainCTA,
+  secondaryCTA,
+} = HeroSectionContentFirewatch;
 
 const FirewatchHero = () => {
+  const theme = useTheme();
+  const isSmallerScreen = useMediaQuery(theme.breakpoints.down("md"));
+
+  const parallaxController = useParallaxController();
+
+  // Function to update parallax controller after images have loaded
+  const handleImageLoad = () => {
+    console.log("Image loaded");
+    parallaxController.update(); // Updates the parallax cache when the image is loaded
+  };
+
   return (
     <Box>
       {/* Keyart Layers using ParallaxBanner */}
-      <ParallaxBanner style={{ aspectRatio: "16/9", height: "100vh" }}>
+      <ParallaxBanner style={{ height: "100vh" }}>
+        {/* Background Layers */}
         <ParallaxBannerLayer
           image={backgroundImage}
-          speed={-60}
+          translateY={[0, 70]}
           expanded={false}
+          shouldAlwaysCompleteAnimation={true}
+          onLoad={handleImageLoad}
         />
-        <ParallaxBannerLayer image={mountains} speed={-50} expanded={false} />
-        <ParallaxBannerLayer image={jungle1} speed={-40} expanded={false} />
-        <ParallaxBannerLayer image={jungle2} speed={-30} expanded={false} />
-        <ParallaxBannerLayer image={jungle3} speed={-20} expanded={false} />
-        <ParallaxBannerLayer image={jungle4} speed={-10} expanded={false} />
-        <ParallaxBannerLayer image={jungle5} speed={0} expanded={true} />
-        <ParallaxBannerLayer image={manOnMountain} speed={10} expanded={true} />
+
+        <ParallaxBannerLayer
+          image={mountains}
+          translateY={[0, 60]}
+          expanded={false}
+          shouldAlwaysCompleteAnimation={true}
+          onLoad={handleImageLoad}
+        />
+        <ParallaxBannerLayer
+          image={jungle1}
+          translateY={[0, 50]}
+          expanded={false}
+          shouldAlwaysCompleteAnimation={true}
+          onLoad={handleImageLoad}
+        />
+        <ParallaxBannerLayer
+          image={jungle2}
+          translateY={[5, 40]}
+          expanded={false}
+          shouldAlwaysCompleteAnimation={true}
+          onLoad={handleImageLoad}
+        />
+        <ParallaxBannerLayer
+          image={jungle3}
+          translateY={[0, 30]}
+          expanded={false}
+          shouldAlwaysCompleteAnimation={true}
+          onLoad={handleImageLoad}
+        />
+        <ParallaxBannerLayer
+          image={jungle4}
+          translateY={[0, 20]}
+          expanded={false}
+          shouldAlwaysCompleteAnimation={true}
+          onLoad={handleImageLoad}
+        />
+        <ParallaxBannerLayer
+          image={jungle5}
+          translateY={[0, 10]}
+          expanded={false}
+          shouldAlwaysCompleteAnimation={true}
+          onLoad={handleImageLoad}
+        />
+        <ParallaxBannerLayer
+          image={manOnMountain}
+          translateY={[15, 25, "easeInOut"]}
+          expanded={false}
+          shouldAlwaysCompleteAnimation={true}
+          onLoad={handleImageLoad}
+        />
+
+        {/* Content Layer */}
+        <ParallaxBannerLayer translateY={[-20, 20]}></ParallaxBannerLayer>
       </ParallaxBanner>
+
+      <Container sx={{ height: "100%" }}>
+        <Stack sx={{ height: "100%" }} justifyContent="center">
+          {/* Titles  */}
+          <Title variant="h1">{title}</Title>
+          <Title variant="h2">{subtitle}</Title>
+          {/* Buttons  */}
+          <Stack
+            direction={{ xs: "column", md: "row" }}
+            alignItems={"center"}
+            spacing={4}
+          >
+            <ActionButton
+              variant="contained"
+              arrowDirection="right"
+              fullWidth={isSmallerScreen}
+              sx={{ height: 58, px: 3 }}
+            >
+              {mainCTA}
+            </ActionButton>
+            <ActionButton
+              variant="outlined"
+              fullWidth={isSmallerScreen}
+              sx={{
+                height: 58,
+                px: 3,
+                color: "text.primary",
+                borderColor: "text.primary",
+              }}
+            >
+              {secondaryCTA}
+            </ActionButton>
+          </Stack>
+        </Stack>
+      </Container>
     </Box>
   );
 };

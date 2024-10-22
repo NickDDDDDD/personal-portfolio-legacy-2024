@@ -1,12 +1,22 @@
 // Navbar
 import logo from "../assets/images/logo.svg";
 
-// Hero Section
-import shootingStarImage from "../assets/images/hero-section/main-bg-0-0.png";
-import mainBG from "../assets/images/hero-section/main-bg-0_1.webp";
-import treesImage from "../assets/images/hero-section/main-bg-1_1.webp";
-import cliffImage from "../assets/images/hero-section/main-bg-2_1.webp";
-import horseImage from "../assets/images/hero-section/main-bg-3.png";
+// Firewatch Hero Section
+import backgroundImage from "../assets/images/firewatch-hero/background.png";
+import mountains from "../assets/images/firewatch-hero/mountains.png";
+import jungle1 from "../assets/images/firewatch-hero/jungle1.png";
+import jungle2 from "../assets/images/firewatch-hero/jungle2.png";
+import jungle3 from "../assets/images/firewatch-hero/jungle3.png";
+import jungle4 from "../assets/images/firewatch-hero/jungle4.png";
+import jungle5 from "../assets/images/firewatch-hero/jungle5.png";
+import manOnMountain from "../assets/images/firewatch-hero/man_on_mountain.png";
+
+// Unicorn Hero Section
+import shootingStarImage from "../assets/images/unicorn-hero/main-bg-0-0.png";
+import mainBG from "../assets/images/unicorn-hero/main-bg-0_1.webp";
+import treesImage from "../assets/images/unicorn-hero/main-bg-1_1.webp";
+import cliffImage from "../assets/images/unicorn-hero/main-bg-2_1.webp";
+import horseImage from "../assets/images/unicorn-hero/main-bg-3.png";
 
 // Footer
 import BookIcon from "@mui/icons-material/Book";
@@ -16,12 +26,28 @@ import ChatIcon from "@mui/icons-material/Chat";
 import TelegramIcon from "@mui/icons-material/Telegram";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
-export const HeroSectionContent = {
+export const HeroSectionContentUnicorn = {
   mainBG,
   treesImage,
   cliffImage,
   horseImage,
   shootingStarImage,
+
+  title: `Hi, I’m Nick`,
+  subtitle: "a software engineer",
+  mainCTA: "Contact Me",
+  secondaryCTA: "My Work",
+};
+
+export const HeroSectionContentFirewatch = {
+  backgroundImage,
+  mountains,
+  jungle1,
+  jungle2,
+  jungle3,
+  jungle4,
+  jungle5,
+  manOnMountain,
   title: `Hi, I’m Nick`,
   subtitle: "a software engineer",
   mainCTA: "Contact Me",

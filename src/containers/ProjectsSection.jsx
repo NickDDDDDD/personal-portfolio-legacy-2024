@@ -3,9 +3,7 @@ import Title from "../components/CustomTypography/Title";
 
 const ProjectsSection = () => {
   return (
-    <Box
-      sx={{ bgcolor: "rgba(6, 7, 10, 0.95)", height: "100vh", width: "100%" }}
-    >
+    <Box sx={{ bgcolor: "#210002", height: "100vh", width: "100%" }}>
       <Container>
         <Title variant="h2"> Projects Gallary </Title>
       </Container>

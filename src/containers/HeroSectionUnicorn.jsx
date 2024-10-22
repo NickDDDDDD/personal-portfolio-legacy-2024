@@ -1,6 +1,6 @@
 import { Box, Container, Stack, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
-import { HeroSectionContent } from "../utils/content";
+import { HeroSectionContentUnicorn } from "../utils/content";
 import ActionButton from "../components/Buttons/ActionButton";
 import Title from "../components/CustomTypography/Title";
 import { Parallax } from "react-scroll-parallax";
@@ -16,9 +16,9 @@ const {
   cliffImage,
   horseImage,
   shootingStarImage,
-} = HeroSectionContent;
+} = HeroSectionContentUnicorn;
 
-const HeroSection = () => {
+const HeroSectionUnicorn = () => {
   const theme = useTheme();
   const isSmallerScreen = useMediaQuery(theme.breakpoints.down("md"));
   const [containerRef, { height: containerHeight }] = useMeasure();
@@ -180,4 +180,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default HeroSectionUnicorn;

@@ -1,20 +1,18 @@
-import HeroSection from "../containers/HeroSection";
+import HeroSectionUnicorn from "../containers/HeroSectionUnicorn";
 import Footer from "../components/Footers/MianFooter";
-import ProjectsSection from "../containers/ProjectsSection";
 import MainNavbar from "../components/Navbars/MainNavbar";
 
-const HomePage = () => {
+const UnicornTemplatePage = () => {
   return (
     <div>
       {/* nav bar  */}
       <MainNavbar />
       {/* sections  */}
-      <HeroSection />
-      <ProjectsSection />
+      <HeroSectionUnicorn />
       {/* footer  */}
       <Footer />
     </div>
   );
 };
 
-export default HomePage;
+export default UnicornTemplatePage;
