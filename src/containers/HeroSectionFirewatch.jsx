@@ -1,13 +1,8 @@
-import { Box, Container, Stack, useTheme, useMediaQuery } from "@mui/material";
-import {
-  ParallaxBanner,
-  ParallaxBannerLayer,
-  useParallaxController,
-} from "react-scroll-parallax";
-import Title from "../components/CustomTypography/Title";
-import ActionButton from "../components/Buttons/ActionButton";
+import { Box } from "@mui/material";
+import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 
 import { HeroSectionContentFirewatch } from "../utils/content";
+import LettersParallax from "../components/LettersParallax";
 
 const {
   backgroundImage,
@@ -18,24 +13,9 @@ const {
   jungle4,
   jungle5,
   manOnMountain,
-  title,
-  subtitle,
-  mainCTA,
-  secondaryCTA,
 } = HeroSectionContentFirewatch;
 
 const FirewatchHero = () => {
-  const theme = useTheme();
-  const isSmallerScreen = useMediaQuery(theme.breakpoints.down("md"));
-
-  const parallaxController = useParallaxController();
-
-  // Function to update parallax controller after images have loaded
-  const handleImageLoad = () => {
-    console.log("Image loaded");
-    parallaxController.update(); // Updates the parallax cache when the image is loaded
-  };
-
   return (
     <Box>
       {/* Keyart Layers using ParallaxBanner */}
@@ -46,97 +26,79 @@ const FirewatchHero = () => {
           translateY={[0, 70]}
           expanded={false}
           shouldAlwaysCompleteAnimation={true}
-          onLoad={handleImageLoad}
         />
-
         <ParallaxBannerLayer
           image={mountains}
           translateY={[0, 60]}
           expanded={false}
           shouldAlwaysCompleteAnimation={true}
-          onLoad={handleImageLoad}
         />
         <ParallaxBannerLayer
           image={jungle1}
           translateY={[0, 50]}
           expanded={false}
           shouldAlwaysCompleteAnimation={true}
-          onLoad={handleImageLoad}
         />
         <ParallaxBannerLayer
           image={jungle2}
           translateY={[5, 40]}
           expanded={false}
           shouldAlwaysCompleteAnimation={true}
-          onLoad={handleImageLoad}
         />
         <ParallaxBannerLayer
           image={jungle3}
           translateY={[0, 30]}
           expanded={false}
           shouldAlwaysCompleteAnimation={true}
-          onLoad={handleImageLoad}
         />
         <ParallaxBannerLayer
           image={jungle4}
           translateY={[0, 20]}
           expanded={false}
           shouldAlwaysCompleteAnimation={true}
-          onLoad={handleImageLoad}
         />
         <ParallaxBannerLayer
           image={jungle5}
           translateY={[0, 10]}
           expanded={false}
           shouldAlwaysCompleteAnimation={true}
-          onLoad={handleImageLoad}
         />
         <ParallaxBannerLayer
           image={manOnMountain}
           translateY={[15, 25, "easeInOut"]}
           expanded={false}
           shouldAlwaysCompleteAnimation={true}
-          onLoad={handleImageLoad}
         />
-
+        <ParallaxBannerLayer
+          opacity={[0, 1]}
+          shouldAlwaysCompleteAnimation={true}
+          expanded={false}
+          style={{
+            position: "absolute",
+            top: 0,
+            right: 0,
+            bottom: 0,
+            left: 0,
+            background: "linear-gradient(to top,#000000,#1a1a1a)",
+          }}
+        ></ParallaxBannerLayer>
         {/* Content Layer */}
-        <ParallaxBannerLayer translateY={[-20, 20]}></ParallaxBannerLayer>
       </ParallaxBanner>
 
-      <Container sx={{ height: "100%" }}>
-        <Stack sx={{ height: "100%" }} justifyContent="center">
-          {/* Titles  */}
-          <Title variant="h1">{title}</Title>
-          <Title variant="h2">{subtitle}</Title>
-          {/* Buttons  */}
-          <Stack
-            direction={{ xs: "column", md: "row" }}
-            alignItems={"center"}
-            spacing={4}
-          >
-            <ActionButton
-              variant="contained"
-              arrowDirection="right"
-              fullWidth={isSmallerScreen}
-              sx={{ height: 58, px: 3 }}
-            >
-              {mainCTA}
-            </ActionButton>
-            <ActionButton
-              variant="outlined"
-              fullWidth={isSmallerScreen}
-              sx={{
-                height: 58,
-                px: 3,
-                color: "text.primary",
-                borderColor: "text.primary",
-              }}
-            >
-              {secondaryCTA}
-            </ActionButton>
-          </Stack>
-        </Stack>
-      </Container>
+      <ParallaxBannerLayer>
+        <LettersParallax
+          letters="HELLO, WORLD!"
+          offsetYA={10}
+          offsetYB={100}
+          offsetXA={10}
+          offsetXB={10}
+          easing="easeInOutQuad"
+          rotate={[0, 360]}
+          fontSize="4rem"
+          fontWeight="600"
+          flexDirection="row"
+        />
+      </ParallaxBannerLayer>
     </Box>
   );
 };
