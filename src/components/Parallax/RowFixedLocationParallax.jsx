@@ -1,6 +1,7 @@
-import { Box, Stack } from "@mui/material";
+import { Stack } from "@mui/material";
 import { Parallax, ParallaxBannerLayer } from "react-scroll-parallax";
 import PropTypes from "prop-types";
+import Title from "../CustomTypography/Title";
 
 // Function to map the string into an array of letter objects
 const generateLetters = (
@@ -28,7 +29,7 @@ const generateLetters = (
   });
 };
 
-const MyParallaxComponent = ({
+const RowFixedLocationParallax = ({
   inputString = "Hello World",
   incrementYMin = 10,
   incrementYMax = 100,
@@ -62,9 +63,7 @@ const MyParallaxComponent = ({
             translateX={[xStart, xEnd]}
             translateY={[yStart, letter.translateY]} // Dynamic translateY based on string length
           >
-            <Box sx={{ fontSize: "5rem", fontWeight: "600" }}>
-              {letter.char}
-            </Box>
+            <Title sx={{ fontWeight: "bold" }}>{letter.char}</Title>
           </Parallax>
         ))}
       </Stack>
@@ -73,7 +72,7 @@ const MyParallaxComponent = ({
 };
 
 // Define propTypes for better clarity and type checking
-MyParallaxComponent.propTypes = {
+RowFixedLocationParallax.propTypes = {
   inputString: PropTypes.string, // The string to display with parallax effect
   xStart: PropTypes.string, // Starting X translation value
   xEnd: PropTypes.string, // Ending X translation value
@@ -84,4 +83,4 @@ MyParallaxComponent.propTypes = {
   reverse: PropTypes.bool, // Whether to reverse the Y increment direction
 };
 
-export default MyParallaxComponent;
+export default RowFixedLocationParallax;

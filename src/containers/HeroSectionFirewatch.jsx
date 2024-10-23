@@ -1,13 +1,8 @@
-import { Box, Stack } from "@mui/material";
-import {
-  ParallaxBanner,
-  ParallaxBannerLayer,
-  Parallax,
-} from "react-scroll-parallax";
+import { Box } from "@mui/material";
+import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 
 import { HeroSectionContentFirewatch } from "../utils/content";
-import LettersParallax from "../components/LettersParallax";
-import MyParallaxComponent from "../components/Parallax/MyParallaxComponent";
+import RowFixedLocationParallax from "../components/Parallax/RowFixedLocationParallax";
 
 const {
   backgroundImage,
@@ -88,26 +83,26 @@ const FirewatchHero = () => {
           }}
         ></ParallaxBannerLayer>
         {/* Content Layer */}
-      </ParallaxBanner>
-      <MyParallaxComponent
-        inputString="Hi Folks!"
-        xStart="30vh"
-        xEnd="120vh"
-        yStart="20vh"
-        incrementYMin={10}
-        incrementYMax={80}
-        reverse={false}
-      />
+        <RowFixedLocationParallax
+          inputString="Hi Folks!"
+          xStart="30vh"
+          xEnd="-120vh"
+          yStart="20vh"
+          incrementYMin={10}
+          incrementYMax={80}
+          reverse={true}
+        />
 
-      <MyParallaxComponent
-        inputString="Welcome to My Protfolio!"
-        xStart="65vh"
-        xEnd="120vh"
-        yStart="45vh"
-        incrementYMin={10}
-        incrementYMax={100}
-        reverse={false}
-      />
+        <RowFixedLocationParallax
+          inputString="Welcome to My Protfolio!"
+          xStart="65vh"
+          xEnd="120vh"
+          yStart="45vh"
+          incrementYMin={10}
+          incrementYMax={100}
+          reverse={false}
+        />
+      </ParallaxBanner>
     </Box>
   );
 };
