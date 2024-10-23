@@ -28,7 +28,8 @@ const LettersParallax = ({
   offsetYA = 0,
   offsetYB = 100,
   offsetXA = 0,
-  offsetXB = null,
+  offsetXB = 0,
+  autoXB = false,
   translate = "xy",
   easing = "easeInOut",
   rotate = [0, 0],
@@ -43,19 +44,17 @@ const LettersParallax = ({
   const letterBlocks = parseLetterBlocks(letters);
 
   const computedOffXB =
-    offsetXB !== null
-      ? offsetXB
-      : lettersWidth
+    autoXB && lettersWidth
       ? 100 - (lettersWidth / window.innerWidth) * 100
-      : 0;
+      : offsetXB;
 
   return (
     <Box
       sx={{
         display: "flex",
         flexDirection: "row",
-        height: "100%",
-        width: "100%",
+        // height: "100%",
+        // width: "100%",
       }}
     >
       <Box
@@ -67,6 +66,7 @@ const LettersParallax = ({
           fontSize: fontSize,
           fontWeight: fontWeight,
           width: "auto",
+          height: "auto",
         }}
       >
         {letterBlocks.map((letter, index) => {
@@ -103,10 +103,7 @@ const LettersParallax = ({
                 left: 0,
               }}
               style={{
-                margin: 0,
-                padding: 0,
-                display: "inline-block",
-                boxSizing: "content-box",
+                display: "inline",
                 lineHeight: 1,
                 letterSpacing: 0,
               }}
@@ -120,13 +117,13 @@ const LettersParallax = ({
   );
 };
 
-// 定义 props 类型
 LettersParallax.propTypes = {
   letters: PropTypes.string,
   offsetYA: PropTypes.number,
   offsetYB: PropTypes.number,
   offsetXA: PropTypes.number,
   offsetXB: PropTypes.number,
+  autoXB: false,
   translate: PropTypes.oneOf(["x", "y", "xy"]),
   easing: PropTypes.string,
   rotate: PropTypes.arrayOf(PropTypes.number),
