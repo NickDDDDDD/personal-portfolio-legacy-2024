@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 
 import { HeroSectionContentFirewatch } from "../utils/content";
-import RowFixedLocationParallax from "../components/Parallax/RowFixedLocationParallax";
+import RowParallax from "../components/Parallax/RowParallax";
 
 const {
   backgroundImage,
@@ -17,7 +17,7 @@ const {
 
 const FirewatchHero = () => {
   return (
-    <Box>
+    <Box sx={{ position: "relative" }}>
       {/* Keyart Layers using ParallaxBanner */}
       <ParallaxBanner style={{ height: "100vh" }}>
         {/* Background Layers */}
@@ -82,27 +82,40 @@ const FirewatchHero = () => {
             background: "linear-gradient(to top,#000000,#1a1a1a)",
           }}
         ></ParallaxBannerLayer>
-        {/* Content Layer */}
-        <RowFixedLocationParallax
+      </ParallaxBanner>
+
+      {/* Content Layer */}
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          position: "absolute",
+          inset: 0,
+        }}
+      >
+        <RowParallax
           inputString="Hi Folks!"
-          xStart="30vh"
-          xEnd="-120vh"
-          yStart="20vh"
-          incrementYMin={10}
-          incrementYMax={80}
+          xStart="0vw"
+          xEnd="-80vw"
+          yStart="0vh"
+          incrementYMin={-80}
+          step={10}
+          easing={"easeInOutBack"}
           reverse={true}
         />
-
-        <RowFixedLocationParallax
+        <RowParallax
           inputString="Welcome to My Protfolio!"
-          xStart="65vh"
-          xEnd="120vh"
-          yStart="45vh"
-          incrementYMin={10}
-          incrementYMax={100}
-          reverse={false}
+          xStart="0vw"
+          xEnd="-80vw"
+          yStart="0vh"
+          incrementYMin={-80}
+          step={10}
+          easing={"easeInOutBack"}
+          reverse={true}
         />
-      </ParallaxBanner>
+      </Box>
     </Box>
   );
 };
