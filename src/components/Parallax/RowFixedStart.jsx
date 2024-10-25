@@ -21,7 +21,7 @@ const generateLetters = (string, changeStep, changeOffset, reverse = false) => {
   });
 };
 
-const LettersParallaxRow = ({
+const RowFixedStart = ({
   inputString,
   fontVariant = "h2",
   sx = {},
@@ -61,7 +61,7 @@ const LettersParallaxRow = ({
 };
 
 // Define propTypes for better clarity and type checking
-LettersParallaxRow.propTypes = {
+RowFixedStart.propTypes = {
   inputString: PropTypes.string, // The string to display with parallax effect
   fontVariant: PropTypes.string, // Font variant for the string
   sx: PropTypes.object, // Additional styles for the string
@@ -75,4 +75,4 @@ LettersParallaxRow.propTypes = {
   reverse: PropTypes.bool, // Whether to reverse the Y increment direction
 };
 
-export default LettersParallaxRow;
+export default RowFixedStart;

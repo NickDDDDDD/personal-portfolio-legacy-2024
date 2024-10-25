@@ -2,7 +2,6 @@ import { Box } from "@mui/material";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 
 import { HeroSectionContentFirewatch } from "../utils/content";
-import LettersParallaxRow from "../components/Parallax/LettersParallaxRow";
 
 const {
   backgroundImage,

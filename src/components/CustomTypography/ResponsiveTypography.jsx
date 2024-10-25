@@ -9,6 +9,7 @@ const ResponsiveTypography = ({
 }) => {
   const theme = useTheme();
 
+  // Add responsive font sizes for h1, h2, h3, body1, and body2
   const responsiveFontSize = {
     h1: {
       xs: theme.typography.h4.fontSize,
@@ -22,20 +23,33 @@ const ResponsiveTypography = ({
       md: theme.typography.h3.fontSize,
       lg: theme.typography.h2.fontSize,
     },
+    h3: {
+      xs: theme.typography.h6.fontSize,
+      sm: theme.typography.h5.fontSize,
+      md: theme.typography.h4.fontSize,
+      lg: theme.typography.h3.fontSize,
+    },
+    body1: {
+      xs: theme.typography.body2.fontSize,
+      sm: theme.typography.body1.fontSize,
+      md: theme.typography.body1.fontSize,
+      lg: theme.typography.body1.fontSize,
+    },
+    body2: {
+      xs: "0.75rem",
+      sm: theme.typography.body2.fontSize,
+      md: theme.typography.body2.fontSize,
+      lg: theme.typography.body2.fontSize,
+    },
   };
-
-  const letterSpacing = variant === "h1" ? "0.02em" : "0.05em";
 
   return (
     <Typography
       variant={variant}
       sx={{
-        letterSpacing: letterSpacing,
         color: "whitesmoke",
-
-        mb: variant === "h1" ? 1 : 5,
         fontSize: responsiveFontSize[variant],
-        textShadow: "0px 0px 2px rgba(0, 0, 0, 0.75)",
+        // textShadow: "0px 0px 2px rgba(0, 0, 0, 0.75)",
         ...sx,
       }}
       {...props}

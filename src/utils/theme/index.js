@@ -1,4 +1,5 @@
 import { createTheme } from "@mui/material";
+import themeTypography from "./typography";
 
 const theme = createTheme({
   palette: {
@@ -14,7 +15,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontFamily: "JetBrains Mono, monospace",
+    ...themeTypography,
   },
 });
 

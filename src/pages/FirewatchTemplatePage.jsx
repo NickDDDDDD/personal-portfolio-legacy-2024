@@ -1,11 +1,13 @@
 import { Box } from "@mui/material";
 import FirewatchHero from "../containers/HeroSectionFirewatch";
-import ProjectsSection from "../containers/ProjectsSection";
+import IntroSection from "../containers/IntroSection";
+import DescriptionSection from "../containers/DescriptionSection";
 const FirewatchTemplatePage = () => {
   return (
     <Box>
       <FirewatchHero />
-      <ProjectsSection />
+      <IntroSection />
+      <DescriptionSection />
     </Box>
   );
 };

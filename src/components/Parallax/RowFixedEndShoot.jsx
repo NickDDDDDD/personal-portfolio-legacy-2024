@@ -10,7 +10,7 @@ const generateLetters = (string) => {
   }));
 };
 
-const LettersShootEffectRow = ({
+const RowFixedEndShoot = ({
   inputString,
   fontVariant = "h2",
   sx = {},
@@ -37,7 +37,7 @@ const LettersShootEffectRow = ({
           translateY: [yPosition, yPosition],
         };
       case "top":
-        return { translateX: [xEnd, xEnd], translateY: ["-200vh", yPosition] };
+        return { translateX: [xEnd, xEnd], translateY: ["-100vh", yPosition] };
       case "bottom":
         return { translateX: [xEnd, xEnd], translateY: ["100vh", yPosition] };
       case "left":
@@ -63,7 +63,15 @@ const LettersShootEffectRow = ({
           <Parallax
             key={index}
             shouldAlwaysCompleteAnimation={true}
+            shouldDisableScalingTranslations={true}
             easing={easing}
+            rootMargin={{
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+            }}
+            opacity={[0, 1]}
             startScroll={startScroll}
             endScroll={endScroll}
             translateX={translateX}
@@ -85,7 +93,7 @@ const LettersShootEffectRow = ({
 };
 
 // Define propTypes for better clarity and type checking
-LettersShootEffectRow.propTypes = {
+RowFixedEndShoot.propTypes = {
   inputString: PropTypes.string.isRequired, // The string to display with parallax effect
   fontVariant: PropTypes.string, // Font variant for the string
   sx: PropTypes.object, // Additional styles for the string
@@ -97,4 +105,4 @@ LettersShootEffectRow.propTypes = {
   shootFromDirection: PropTypes.oneOf(["left", "right", "top", "bottom"]), // Direction for the shoot effect
 };
 
-export default LettersShootEffectRow;
+export default RowFixedEndShoot;
