@@ -1,23 +1,18 @@
 import { Box } from "@mui/material";
 import { Parallax } from "react-scroll-parallax";
 import PropTypes from "prop-types";
-import Title from "../CustomTypography/Title";
+import ResponsiveTypography from "../CustomTypography/ResponsiveTypography";
 
 // Function to map the string into an array of letter objects
-const generateLetters = (
-  string,
-  incrementYMin,
-  incrementYMax,
-  changeStep,
-  reverse = false
-) => {
+const generateLetters = (string, changeStep, changeOffset, reverse = false) => {
   const lettersArray = Array.from(string);
 
   return lettersArray.map((char, index) => {
     // Calculate the Y value dynamically for each letter
     const translateYValue = reverse
-      ? incrementYMin + index * changeStep
-      : incrementYMax - index * changeStep;
+      ? (changeOffset - 1) * string.length * changeStep +
+        (index + 1) * changeStep
+      : changeOffset * string.length * changeStep - (index + 1) * changeStep;
 
     return {
       char: char === " " ? "\u00A0" : char, // Handle spaces correctly with a non-breaking space
@@ -26,25 +21,19 @@ const generateLetters = (
   });
 };
 
-const RowParallax = ({
+const LettersParallaxRow = ({
   inputString,
-  incrementYMin,
+  fontVariant = "h2",
+  sx = {},
   step,
   xStart,
   xEnd,
   yStart,
+  changeOffset,
   easing,
   reverse = false,
 }) => {
-  const incrementYMax = (inputString.length - 1) * step;
-
-  const letters = generateLetters(
-    inputString,
-    incrementYMin,
-    incrementYMax,
-    step,
-    reverse
-  );
+  const letters = generateLetters(inputString, step, changeOffset, reverse);
 
   return (
     <Box sx={{ display: "flex" }}>
@@ -62,7 +51,9 @@ const RowParallax = ({
           translateX={[xStart, xEnd]}
           translateY={[yStart, letter.translateY]} // Dynamic translateY based on string length
         >
-          <Title sx={{ fontWeight: "bold" }}>{letter.char}</Title>
+          <ResponsiveTypography variant={fontVariant} sx={{ ...sx }}>
+            {letter.char}
+          </ResponsiveTypography>
         </Parallax>
       ))}
     </Box>
@@ -70,16 +61,18 @@ const RowParallax = ({
 };
 
 // Define propTypes for better clarity and type checking
-RowParallax.propTypes = {
+LettersParallaxRow.propTypes = {
   inputString: PropTypes.string, // The string to display with parallax effect
+  fontVariant: PropTypes.string, // Font variant for the string
+  sx: PropTypes.object, // Additional styles for the string
   easing: PropTypes.string, // Easing function for the parallax effect
   xStart: PropTypes.string, // Starting X translation value
   xEnd: PropTypes.string, // Ending X translation value
   yStart: PropTypes.string,
   incrementYMin: PropTypes.number, // Minimum Y translate value
   step: PropTypes.number, // Step value for Y translate
-
+  changeOffset: PropTypes.number, // Offset value for Y translate
   reverse: PropTypes.bool, // Whether to reverse the Y increment direction
 };
 
-export default RowParallax;
+export default LettersParallaxRow;

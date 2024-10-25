@@ -13,7 +13,9 @@ const theme = createTheme({
       secondary: "rgba(255, 255, 255, 0.6)",
     },
   },
-  // typography: themeTypography,
+  typography: {
+    fontFamily: "JetBrains Mono, monospace",
+  },
 });
 
 export default theme;

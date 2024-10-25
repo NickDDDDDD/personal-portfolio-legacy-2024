@@ -2,7 +2,7 @@ import { Box } from "@mui/material";
 import { ParallaxBanner, ParallaxBannerLayer } from "react-scroll-parallax";
 
 import { HeroSectionContentFirewatch } from "../utils/content";
-import RowParallax from "../components/Parallax/RowParallax";
+import LettersParallaxRow from "../components/Parallax/LettersParallaxRow";
 
 const {
   backgroundImage,
@@ -84,38 +84,32 @@ const FirewatchHero = () => {
         ></ParallaxBannerLayer>
       </ParallaxBanner>
 
-      {/* Content Layer */}
-      <Box
+      {/* <Box
         sx={{
           display: "flex",
           flexDirection: "column",
           justifyContent: "center",
           alignItems: "center",
           position: "absolute",
+          gap: "1rem",
+          width: "auto",
+          height: "auto",
           inset: 0,
         }}
       >
-        <RowParallax
-          inputString="Hi Folks!"
+        <LettersParallaxRow
+          inputString="[Hello, World!]"
+          fontVariant="h1"
           xStart="0vw"
-          xEnd="-80vw"
+          xEnd="100vw"
           yStart="0vh"
-          incrementYMin={-80}
           step={10}
-          easing={"easeInOutBack"}
-          reverse={true}
+          changeOffset={0.5}
+          easing={"easeInBack"}
+          reverse={false}
+          sx={{ fontWeight: "bold" }}
         />
-        <RowParallax
-          inputString="Welcome to My Protfolio!"
-          xStart="0vw"
-          xEnd="-80vw"
-          yStart="0vh"
-          incrementYMin={-80}
-          step={10}
-          easing={"easeInOutBack"}
-          reverse={true}
-        />
-      </Box>
+      </Box> */}
     </Box>
   );
 };

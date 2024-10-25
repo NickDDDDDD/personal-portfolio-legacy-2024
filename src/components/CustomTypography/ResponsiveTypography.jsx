@@ -1,7 +1,12 @@
 import { Typography, useTheme } from "@mui/material";
 import PropTypes from "prop-types";
 
-const Title = ({ variant = "h1", children, ...props }) => {
+const ResponsiveTypography = ({
+  variant = "h1",
+  children,
+  sx = {},
+  ...props
+}) => {
   const theme = useTheme();
 
   const responsiveFontSize = {
@@ -26,8 +31,12 @@ const Title = ({ variant = "h1", children, ...props }) => {
       variant={variant}
       sx={{
         letterSpacing: letterSpacing,
+        color: "whitesmoke",
+
         mb: variant === "h1" ? 1 : 5,
         fontSize: responsiveFontSize[variant],
+        textShadow: "0px 0px 2px rgba(0, 0, 0, 0.75)",
+        ...sx,
       }}
       {...props}
     >
@@ -36,9 +45,10 @@ const Title = ({ variant = "h1", children, ...props }) => {
   );
 };
 
-Title.propTypes = {
+ResponsiveTypography.propTypes = {
   variant: PropTypes.string,
   children: PropTypes.node,
+  sx: PropTypes.object,
 };
 
-export default Title;
+export default ResponsiveTypography;

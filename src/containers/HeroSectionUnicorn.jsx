@@ -2,7 +2,7 @@ import { Box, Container, Stack, useMediaQuery } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { HeroSectionContentUnicorn } from "../utils/content";
 import ActionButton from "../components/Buttons/ActionButton";
-import Title from "../components/CustomTypography/Title";
+import Title from "../components/CustomTypography/ResponsiveTypography";
 import { Parallax } from "react-scroll-parallax";
 import useMeasure from "react-use-measure";
 
