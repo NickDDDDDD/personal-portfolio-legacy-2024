@@ -32,17 +32,17 @@ const RowFixedEnd = ({
     switch (shootFromDirection) {
       case "right":
         return {
-          translateX: ["100vw", xEnd],
+          translateX: ["10vw", xEnd],
           translateY: [yEnd, yEnd],
         };
       case "top":
-        return { translateX: [xEnd, xEnd], translateY: ["-100vh", yEnd] };
+        return { translateX: [xEnd, xEnd], translateY: ["-10vh", yEnd] };
       case "bottom":
-        return { translateX: [xEnd, xEnd], translateY: ["100vh", yEnd] };
+        return { translateX: [xEnd, xEnd], translateY: ["10vh", yEnd] };
       case "left":
       default:
         return {
-          translateX: ["-100vw", xEnd],
+          translateX: ["-10vw", xEnd],
           translateY: [yEnd, yEnd],
         };
     }
@@ -72,6 +72,13 @@ const RowFixedEnd = ({
             key={index}
             shouldAlwaysCompleteAnimation={true}
             easing={easing}
+            rootMargin={{
+              top: 0,
+              right: 0,
+              bottom: 0,
+              left: 0,
+            }}
+            opacity={[0, 1]}
             translateX={translateX}
             translateY={translateY}
             startScroll={startOffset + index}

@@ -21,7 +21,7 @@ const DescriptionSection = () => {
           xEnd="0vw" // Letters will stop at 0vw from the left
           easing="easeOutQuint" // Use ease-out easing
           shootFromDirection="top" // Letters will shoot in from the top
-          startOffset={1200} // Delay the start of the animation
+          startOffset={1300} // Delay the start of the animation
           baseScrollDuration={200} // Base duration for animation
           durationIncrement={50}
           sx={{ color: "#000000" }} // Increment for each letter's animation duration
@@ -33,9 +33,9 @@ const DescriptionSection = () => {
           xEnd="0vw" // Letters will stop at 0vw from the left
           easing="easeOutBack" // Use ease-out easing
           shootFromDirection="top" // Letters will shoot in from the top
-          startOffset={800} // Delay the start of the animation
-          baseScrollDuration={200} // Base duration for animation
-          durationIncrement={50} // Increment for each letter's animation duration
+          startOffset={1300} // Delay the start of the animation
+          baseScrollDuration={80} // Base duration for animation
+          durationIncrement={20} // Increment for each letter's animation duration
           sx={{ color: "#ffaf1b", fontWeight: "bold" }} // Text color white
         />
       </Box>

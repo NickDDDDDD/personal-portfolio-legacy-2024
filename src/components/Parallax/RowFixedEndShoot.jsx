@@ -63,7 +63,6 @@ const RowFixedEndShoot = ({
           <Parallax
             key={index}
             shouldAlwaysCompleteAnimation={true}
-            shouldDisableScalingTranslations={true}
             easing={easing}
             rootMargin={{
               top: 0,
