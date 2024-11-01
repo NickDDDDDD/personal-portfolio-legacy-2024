@@ -1,41 +1,26 @@
-import { Box } from "@mui/material";
-import RowFixedEnd from "../components/Parallax/RowFixedEnd";
+import RowMotion from "../components/Parallax/RowMotion.jsx";
 import MyAvatar from "../components/MyAvatar";
 import ParallaxContainer from "../components/ParallaxContainer";
 
 const IntroSection = () => {
   return (
     <ParallaxContainer>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "1em",
-        }}
-      >
-        <RowFixedEnd
+      <div className="flex flex-col items-center justify-center gap-4">
+        <RowMotion
           inputString="Hello, my name is"
           fontVariant="h2"
-          easing="easeOutQuint" // Use ease-out easing
-          shootFromDirection="top" // Letters will shoot in from the top
-          startOffset={500} // Delay the start of the animation
-          baseScrollDuration={200} // Base duration for animation
-          durationIncrement={50}
+          ease="backInOut"
+          shootFromDirection="right"
         />
-        <RowFixedEnd
+        <RowMotion
           inputString="Nick"
           fontVariant="h1"
-          easing="easeOutBack" // Use ease-out easing
-          shootFromDirection="top" // Letters will shoot in from the top
-          startOffset={500} // Delay the start of the animation
-          baseScrollDuration={200} // Base duration for animation
-          durationIncrement={50} // Increment for each letter's animation duration
-          sx={{ color: "#ffaf1b", fontWeight: "bold" }} // Text color white
+          ease="backInOut"
+          shootFromDirection="right"
+          className="text-[#ffaf1b] font-bold"
         />
         <MyAvatar />
-      </Box>
+      </div>
     </ParallaxContainer>
   );
 };

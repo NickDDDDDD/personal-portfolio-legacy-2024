@@ -1,45 +1,24 @@
-import { Box } from "@mui/material";
 import PropTypes from "prop-types";
 
-const ParallaxContainer = ({
-  children,
-  backgroundColor = "#000000",
-  sx = {},
-}) => {
-  return (
-    <Box
-      sx={{
-        bgcolor: backgroundColor,
-        height: "100vh",
-        width: "100%",
-        position: "relative",
-        overflow: "hidden",
-      }}
-    >
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "center",
-          alignItems: "center",
-          position: "absolute",
-          gap: "10em",
-          width: "auto",
-          height: "auto",
-          inset: 0,
-          ...sx,
-        }}
-      >
-        {children}
-      </Box>
-    </Box>
-  );
+const ParallaxContainer = ({ children, backgroundColor = "#000000", className = "" }) => {
+    return (
+        <div
+            className={`relative overflow-hidden h-screen w-full`}
+            style={{ backgroundColor }}
+        >
+            <div
+                className={`flex flex-col justify-center items-center absolute inset-0 gap-[10em] ${className}`}
+            >
+                {children}
+            </div>
+        </div>
+    );
 };
 
 ParallaxContainer.propTypes = {
-  children: PropTypes.node,
-  backgroundColor: PropTypes.string,
-  sx: PropTypes.object,
+    children: PropTypes.node,
+    backgroundColor: PropTypes.string,
+    className: PropTypes.string,
 };
 
 export default ParallaxContainer;

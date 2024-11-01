@@ -1,62 +1,37 @@
 import ParallaxContainer from "../components/ParallaxContainer";
-import { Box } from "@mui/material";
-import RowFixedEnd from "../components/Parallax/RowFixedEnd";
+import RowMotion from "../components/Parallax/RowMotion.jsx";
 import ResponsiveTypography from "../components/CustomTypography/ResponsiveTypography";
 
 const DescriptionSection = () => {
   return (
-    <ParallaxContainer backgroundColor="#ffffff" sx={{ gap: "2em" }}>
-      <Box
-        sx={{
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
-          gap: "1em",
-        }}
-      >
-        <RowFixedEnd
+    <ParallaxContainer backgroundColor="#ffffff" className="gap-8">
+      <div className="flex flex-col items-center justify-center gap-4">
+        <RowMotion
           inputString="I'm a"
           fontVariant="h3"
-          xEnd="0vw" // Letters will stop at 0vw from the left
-          easing="easeOutQuint" // Use ease-out easing
-          shootFromDirection="top" // Letters will shoot in from the top
-          startOffset={1300} // Delay the start of the animation
-          baseScrollDuration={200} // Base duration for animation
-          durationIncrement={50}
-          sx={{ color: "#000000" }} // Increment for each letter's animation duration
+          xEnd="0vw"
+          easing="easeInOut"
+          shootFromDirection="top"
+          className="text-black"
         />
 
-        <RowFixedEnd
+        <RowMotion
           inputString="software developer"
           fontVariant="h2"
-          xEnd="0vw" // Letters will stop at 0vw from the left
-          easing="easeOutBack" // Use ease-out easing
-          shootFromDirection="top" // Letters will shoot in from the top
-          startOffset={1300} // Delay the start of the animation
-          baseScrollDuration={80} // Base duration for animation
-          durationIncrement={20} // Increment for each letter's animation duration
-          sx={{ color: "#ffaf1b", fontWeight: "bold" }} // Text color white
+          xEnd="0vw"
+          easing="easeInOut"
+          shootFromDirection="top"
+          className="text-[#ffaf1b] font-bold"
         />
-      </Box>
-      <Box
-        sx={{
-          width: {
-            xs: "90%",
-            sm: "80%",
-            md: "70%",
-            lg: "60%",
-            xl: "50%",
-          },
-        }}
-      >
-        <ResponsiveTypography variant="body1" sx={{ color: "#000000" }}>
+      </div>
+      <div className="w-[90%] sm:w-[80%] md:w-[70%] lg:w-[60%] xl:w-[50%]">
+        <ResponsiveTypography variant="body2" className="text-black">
           I like to think of myself as a front-end developer with a
           understanding of back-end technologies. While I enjoy exploring
           back-end tech, working on the front end brings me more passion. I love
           the feeling of presenting my work to the user.
         </ResponsiveTypography>
-      </Box>
+      </div>
     </ParallaxContainer>
   );
 };
